@@ -1,0 +1,18 @@
+{
+  "name": "workflow-optimizer",
+  "version": "1.0.0",
+  "description": "Analyze and optimize .claude/ workflow ecosystem — pipelines, agents, rules, memory, SSOT",
+  "author": {
+    "name": "abe1272001"
+  },
+  "repository": "https://github.com/abe1272001/claude-workflow-optimizer",
+  "license": "MIT",
+  "keywords": [
+    "workflow",
+    "pipeline",
+    "agents",
+    "optimization",
+    "claude-code",
+    "developer-experience"
+  ]
+}
