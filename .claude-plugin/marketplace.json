@@ -9,7 +9,7 @@
   },
   "plugins": [
     {
-      "name": "claude-workflow-optimizer",
+      "name": "workflow-optimizer",
       "version": "1.1.0",
       "source": "./plugin",
       "description": "Analyze and optimize .claude/ workflow ecosystem — rules, agents, commands, memory, settings"
