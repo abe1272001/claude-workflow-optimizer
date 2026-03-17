@@ -1,6 +1,6 @@
 # claude-workflow-optimizer
 
-A Claude Code plugin for analyzing and optimizing `.claude/` workflow ecosystems — pipelines, agents, rules, memory, and SSOT mappings.
+A Claude Code plugin for analyzing and optimizing `.claude/` workflow ecosystems — rules, agents, commands, memory, and settings — following the architecture patterns established by Boris Cherny (Head of Claude Code, Anthropic).
 
 ## What it does
 
@@ -8,22 +8,21 @@ Scans your entire `.claude/` directory and detects inefficiencies across 4 dimen
 
 | Dimension | What it checks |
 |-----------|---------------|
-| **Flow Efficiency** (2x weight) | Pipeline stage count, handoff overhead, sequential bottlenecks, duplicate checkpoints |
-| **Token Efficiency** | Agent profile bloat, rule duplication, bilingual redundancy, inline data |
-| **Consistency** | SSOT drift, agent boundary overlap, memory staleness, rule conflicts |
-| **Agent Architecture** | Too many agents, unclear triggers, protocol overhead, communication gaps |
+| **Rule & Instruction Efficiency** (2x weight) | Instruction overload, monolithic CLAUDE.md, rule duplication, dead instructions, over-specified examples |
+| **Token Efficiency** | Agent profile bloat, inline data, bilingual duplication, command bloat, unused MCP servers |
+| **Consistency** | Agent boundary overlap, memory staleness, orphan memory, rule conflicts, settings drift |
+| **Agent & Command Architecture** | Too many agents, unclear triggers, command-agent duplication, disconnected agents |
 
-**22 anti-patterns** detected, each with BAD/GOOD examples, severity rating, and specific fix.
+**22 base anti-patterns** + **6 conditional checks** (activated when pipeline/handoff/SSOT assets are detected), each with BAD/GOOD examples, severity rating, and specific fix.
 
 ## Target Metrics
 
-| Dimension | Ideal | Warning | Critical |
-|-----------|-------|---------|----------|
+| Asset | Ideal | Warning | Critical |
+|-------|-------|---------|----------|
 | CLAUDE.md | ~170 lines / ~2.5k tokens | >250 lines | >400 lines |
 | Agent profile | ~150 lines / ~2k tokens | >300 lines | >450 lines |
 | Rule file | ~50 lines / ~700 tokens | >100 lines | >200 lines |
-| Handoff protocol | ~80 lines | >150 lines | >300 lines |
-| Pipeline stages | 7-8 per pipeline | >10 | >12 |
+| Command file | ~30 lines / ~400 tokens | >80 lines | >150 lines |
 | Total instructions | <150 across all files | >200 | >300 |
 
 ## Installation
@@ -47,27 +46,31 @@ claude plugin update workflow-optimizer@claude-workflow-optimizer
 /workflow-optimizer optimize    # Full analysis + optimized file versions
 /workflow-optimizer apply       # Report + directly apply safe fixes
 /workflow-optimizer audit       # Deep dive with git history analysis
+/workflow-optimizer migrate     # Split monolithic CLAUDE.md into modular rules/
 ```
 
 ## Output
 
 ```
 ═══════════════════════════════════════════
-🔧 Workflow Optimizer Report
+Workflow Optimizer Report
 ═══════════════════════════════════════════
 
 ## Health Score
-| Dimension        | Score | Status |
-|------------------|-------|--------|
-| Flow Efficiency  | X/5   | 🟢/🟡/🔴 |
-| Token Efficiency | X/5   | 🟢/🟡/🔴 |
-| Consistency      | X/5   | 🟢/🟡/🔴 |
-| Agent Arch       | X/5   | 🟢/🟡/🔴 |
+| Dimension                      | Score | Status |
+|--------------------------------|-------|--------|
+| Rule & Instruction Efficiency  | X/5   | G/Y/R  |
+| Token Efficiency               | X/5   | G/Y/R  |
+| Consistency                    | X/5   | G/Y/R  |
+| Agent & Command Architecture   | X/5   | G/Y/R  |
+| Overall                        | X/5   |        |
+
+Overall = (Rule Efficiency x 2 + Token + Consistency + Architecture) / 5
 
 ## Anti-Patterns Found
-### 🔴 HIGH — [description] — [location] — [fix]
-### 🟡 MEDIUM — ...
-### 🟢 LOW — ...
+### HIGH — [description] — [location] — [fix]
+### MEDIUM — ...
+### LOW — ...
 
 ## Top 5 Recommendations
 ## Token Savings Estimate

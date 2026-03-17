@@ -4,15 +4,15 @@
     "name": "abe1272001"
   },
   "metadata": {
-    "description": "Workflow optimization plugin for Claude Code — analyze pipelines, agents, rules, memory, SSOT",
+    "description": "Workflow optimization plugin for Claude Code — analyze rules, agents, commands, memory, settings",
     "homepage": "https://github.com/abe1272001/claude-workflow-optimizer"
   },
   "plugins": [
     {
       "name": "claude-workflow-optimizer",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "source": "./plugin",
-      "description": "Analyze and optimize .claude/ workflow ecosystem — pipelines, agents, rules, memory, SSOT"
+      "description": "Analyze and optimize .claude/ workflow ecosystem — rules, agents, commands, memory, settings"
     }
   ]
 }
