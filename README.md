@@ -42,16 +42,14 @@ Includes reference materials on the 9 skill categories, 8 design principles, 10 
 
 ```bash
 claude plugin marketplace add https://github.com/abe1272001/claude-optimizer
-claude plugin install claude-optimizer@workflow-optimizer
-claude plugin install claude-optimizer@skill-advisor
+claude plugin install claude-optimizer@claude-optimizer
 ```
 
 ### Updating
 
 ```bash
 claude plugin marketplace update claude-optimizer
-claude plugin update claude-optimizer@workflow-optimizer
-claude plugin update claude-optimizer@skill-advisor
+claude plugin update claude-optimizer@claude-optimizer
 ```
 
 ## License
